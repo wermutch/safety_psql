@@ -1,0 +1,6 @@
+
+CREATE USER nerush WITH PASSWORD 'nerush';
+
+-- USAGE
+GRANT CONNECT ON DATABASE labdb TO nerush;
+GRANT USAGE ON SCHEMA public TO nerush;

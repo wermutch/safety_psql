@@ -1,0 +1,25 @@
+services:
+  db:
+    build: .
+    container_name: pg18_lab
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: labdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      # scram-sha-256
+      POSTGRES_HOST_AUTH_METHOD: scram-sha-256
+      POSTGRES_INITDB_ARGS: "--locale=ru_RU.UTF-8 --encoding=UTF8"
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+      - ./init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d labdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata:
