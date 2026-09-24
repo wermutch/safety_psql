@@ -1,7 +1,7 @@
 services:
   db:
     build: .
-    container_name: pg18_lab
+    container_name: pg18_lab1
     restart: unless-stopped
     environment:
       POSTGRES_DB: labdb

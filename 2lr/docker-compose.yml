@@ -1,7 +1,7 @@
 services:
   db:
     build: ./db
-    container_name: pg18_lab
+    container_name: pg18_lab2
     restart: unless-stopped
     environment:
       POSTGRES_DB: labdb
@@ -21,8 +21,9 @@ services:
       retries: 10
 
   pinger:
-    build: ./pinger
-    image: pinger:1.0
+    #build: ./pinger
+    #image: pinger:1.0
+    image: pinger/nerush
     container_name: pinger_lab2
     restart: unless-stopped
     volumes:

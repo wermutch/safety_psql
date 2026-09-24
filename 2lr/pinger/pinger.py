@@ -53,7 +53,7 @@ def build_logger():
 
 
 def check_once(logger, db_params):
-    # connect_timeout берётся из config.yaml (не даёт зависнуть при недоступной БД)
+    # connect_timeout из config.yaml
     conn = psycopg2.connect(**db_params)
     try:
         with conn.cursor() as cur:
